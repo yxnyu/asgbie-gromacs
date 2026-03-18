@@ -1,0 +1,53 @@
+# ASGBIE-GROMACS .gitignore
+
+# Work directories (generated at runtime)
+asgbie_work/
+asgbie_results/
+
+# GROMACS output files
+*.tpr
+*.xtc
+*.trr
+*.edr
+*.cpt
+*.gro
+*.log
+*.xvg
+*.pdb
+!complex.pdb
+*.ndx
+
+# AMBER intermediate files
+*.prmtop
+*.mdcrd
+*.inpcrd
+
+# gmx_MMPBSA intermediates
+_GMXMMPBSA_*
+
+# Backup files
+*.bak
+*~
+\#*\#
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment / secrets
+.env
+*.key
+*.pem
+credentials.*
+
+# Editor
+.vscode/
+.idea/
+
+# Claude
+.claude/

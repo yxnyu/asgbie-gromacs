@@ -1,0 +1,16 @@
+; ============================================================
+; ASGBIE-GROMACS: Energy Minimization Parameters
+; ============================================================
+integrator  = steep         ; Steepest descent algorithm
+emtol       = 1000.0        ; Max force convergence criterion (kJ/mol/nm)
+emstep      = 0.01          ; Step size (nm)
+nsteps      = __EM_STEPS__  ; Max steps (replaced by config.sh)
+
+; Neighbor searching
+nstlist         = 10
+cutoff-scheme   = Verlet
+ns_type         = grid
+coulombtype     = PME
+rcoulomb        = 1.2
+rvdw            = 1.2
+pbc             = xyz

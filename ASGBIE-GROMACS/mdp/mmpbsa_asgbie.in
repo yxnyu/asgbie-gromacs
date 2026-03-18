@@ -1,0 +1,24 @@
+&general
+  # ASGBIE = Alanine Scanning + Generalized Born + Interaction Entropy
+  # Implemented via gmx_MMPBSA, fully replacing commercial AMBER
+  sys_name             = "ASGBIE-GROMACS",
+  startframe           = __START_FRAME__,
+  endframe             = __END_FRAME__,
+  interval             = __INTERVAL__,
+  forcefields          = "oldff/leaprc.ff99SB,leaprc.gaff",
+  interaction_entropy  = 1,            # Enable Interaction Entropy
+  ie_segment           = __IE_SEGMENT__,
+  temperature          = __TEMPERATURE__,
+/
+
+&gb
+  igb    = __IGB__,       # GB model (5=OBC2, recommended)
+  saltcon = 0.15,         # Ionic strength (mol/L)
+/
+
+&alanine_scanning
+  mutant = "ALA",          # Mutate to alanine
+  mutant_res = "__ALA_RESIDUES__",  # Empty = auto-scan interface residues
+  cas_intdiel = 1,         # Mutant internal dielectric constant
+  intdiel_res = "",
+/

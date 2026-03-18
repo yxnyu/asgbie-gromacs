@@ -1,0 +1,44 @@
+; ============================================================
+; ASGBIE-GROMACS: Production MD (default 10 ns)
+; ============================================================
+integrator  = md
+nsteps      = __PROD_STEPS__
+dt          = 0.002
+
+; Output
+nstxout-compressed  = __PROD_NSTXOUT__
+nstlog              = 5000
+nstenergy           = 5000
+
+; Bond constraints
+continuation    = yes
+constraint_algorithm = lincs
+constraints     = h-bonds
+lincs_iter      = 1
+lincs_order     = 4
+
+; Neighbor searching
+nstlist         = 20
+cutoff-scheme   = Verlet
+ns_type         = grid
+coulombtype     = PME
+rcoulomb        = 1.2
+rvdw            = 1.2
+pbc             = xyz
+DispCorr        = EnerPres
+
+; Temperature coupling
+tcoupl      = V-rescale
+tc-grps     = Protein Non-Protein
+tau_t       = 0.1   0.1
+ref_t       = __TEMPERATURE__   __TEMPERATURE__
+
+; Pressure coupling
+pcoupl          = Parrinello-Rahman
+pcoupltype      = isotropic
+tau_p           = 2.0
+ref_p           = 1.0
+compressibility = 4.5e-5
+
+; Velocity generation
+gen_vel     = no
